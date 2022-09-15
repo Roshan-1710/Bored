@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Profile"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Name :"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView11"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
+        app:layout_constraintTop_toTopOf="@+id/guideline15" />
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="125sp"
+        android:layout_height="wrap_content"
+        android:text="placeholder"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView12"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView12" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:background="@color/white"
+        android:src="@drawable/baseline_mode_edit_black"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <EditText
+        android:id="@+id/fnameedt"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        android:background="@drawable/edtxt_border"
+        android:backgroundTint="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+
+    <ImageView
+        android:id="@+id/fnamechk"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/ic_baseline_check_24"
+        app:layout_constraintBottom_toBottomOf="@+id/fnameedt"
+        app:layout_constraintStart_toEndOf="@+id/fnameedt"
+        app:layout_constraintTop_toTopOf="@+id/fnameedt"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/fnameclose"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_marginLeft="5sp"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintBottom_toBottomOf="@id/fnamechk"
+        app:layout_constraintTop_toTopOf="@id/fnamechk"
+        app:layout_constraintStart_toEndOf="@id/fnamechk"
+        android:visibility="invisible"/>
+
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last Name :"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toStartOf="@+id/lastname"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
+        app:layout_constraintTop_toBottomOf="@+id/fnameedt" />
+
+    <TextView
+        android:id="@+id/lastname"
+        android:layout_width="125sp"
+        android:layout_height="wrap_content"
+        android:text="placeholder"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView13"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toEndOf="@+id/textView12" />
+
+    <ImageView
+        android:id="@+id/lnameedtbtn"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:background="@color/white"
+        android:src="@drawable/baseline_mode_edit_black"
+        app:layout_constraintBottom_toBottomOf="@+id/lastname"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/lastname" />
+
+    <EditText
+        android:id="@+id/lnameedt"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        android:background="@drawable/edtxt_border"
+        android:backgroundTint="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/lastname"
+        app:layout_constraintStart_toStartOf="@+id/lastname"
+        app:layout_constraintTop_toBottomOf="@+id/lastname" />
+
+    <ImageView
+        android:id="@+id/lnamechk"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/ic_baseline_check_24"
+        app:layout_constraintBottom_toBottomOf="@+id/lnameedt"
+        app:layout_constraintStart_toEndOf="@+id/lnameedt"
+        app:layout_constraintTop_toTopOf="@+id/lnameedt"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/lnameclose"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_marginLeft="5sp"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintBottom_toBottomOf="@id/lnamechk"
+        app:layout_constraintTop_toTopOf="@id/lnamechk"
+        app:layout_constraintStart_toEndOf="@id/lnamechk"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username :"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toStartOf="@+id/lastname"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
+        app:layout_constraintTop_toBottomOf="@+id/lnameedt" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="125sp"
+        android:layout_height="wrap_content"
+        android:text="placeholder"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toEndOf="@+id/textView12" />
+
+    <ImageView
+        android:id="@+id/unameedtbtn"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:background="@color/white"
+        android:src="@drawable/baseline_mode_edit_black"
+        app:layout_constraintBottom_toBottomOf="@+id/username"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/username" />
+
+    <EditText
+        android:id="@+id/unameedt"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:visibility="invisible"
+        android:textColor="@color/black"
+        android:background="@drawable/edtxt_border"
+        android:backgroundTint="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/username"
+        app:layout_constraintStart_toStartOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <ImageView
+        android:id="@+id/unamechk"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/ic_baseline_check_24"
+        app:layout_constraintBottom_toBottomOf="@+id/unameedt"
+        app:layout_constraintStart_toEndOf="@+id/unameedt"
+        app:layout_constraintTop_toTopOf="@+id/unameedt"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/unameclose"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_marginLeft="5sp"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintBottom_toBottomOf="@id/unamechk"
+        app:layout_constraintTop_toTopOf="@id/unamechk"
+        app:layout_constraintStart_toEndOf="@id/unamechk"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email :"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toStartOf="@+id/lastname"
+        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
+        app:layout_constraintTop_toBottomOf="@+id/unameedt" />
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:text="placeholder"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView15"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toEndOf="@+id/textView12" />
+
+    <ImageView
+        android:id="@+id/emailedtbtn"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:background="@color/white"
+        android:src="@drawable/baseline_mode_edit_black"
+        app:layout_constraintBottom_toBottomOf="@+id/email"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/email" />
+
+    <EditText
+        android:id="@+id/emailedt"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:visibility="invisible"
+        android:textColor="@color/black"
+        android:background="@drawable/edtxt_border"
+        android:backgroundTint="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <ImageView
+        android:id="@+id/emailchk"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/ic_baseline_check_24"
+        app:layout_constraintBottom_toBottomOf="@+id/emailedt"
+        app:layout_constraintStart_toEndOf="@+id/emailedt"
+        app:layout_constraintTop_toTopOf="@+id/emailedt"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/emailclose"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_marginLeft="5sp"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintBottom_toBottomOf="@id/emailchk"
+        app:layout_constraintTop_toTopOf="@id/emailchk"
+        app:layout_constraintStart_toEndOf="@id/emailchk"
+        android:visibility="invisible"/>
+
+
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Password :"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toStartOf="@+id/lastname"
+        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
+        app:layout_constraintTop_toBottomOf="@+id/emailedt" />
+
+    <TextView
+        android:id="@+id/password"
+        android:layout_width="125sp"
+        android:layout_height="wrap_content"
+        android:text="placeholder"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView16"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toEndOf="@+id/textView12" />
+
+    <ImageView
+        android:id="@+id/passedtbtn"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:background="@color/white"
+        android:src="@drawable/baseline_mode_edit_black"
+        app:layout_constraintBottom_toBottomOf="@+id/password"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/password" />
+
+    <EditText
+        android:id="@+id/passwordedt"
+        android:layout_width="150sp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:visibility="invisible"
+        android:textColor="@color/black"
+        android:background="@drawable/edtxt_border"
+        android:backgroundTint="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/password"
+        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <ImageView
+        android:id="@+id/passchk"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/ic_baseline_check_24"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordedt"
+        app:layout_constraintStart_toEndOf="@+id/passwordedt"
+        app:layout_constraintTop_toTopOf="@+id/passwordedt"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/passclose"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_marginLeft="5sp"
+        android:src="@drawable/ic_baseline_close_24"
+        app:layout_constraintBottom_toBottomOf="@id/passchk"
+        app:layout_constraintTop_toTopOf="@id/passchk"
+        app:layout_constraintStart_toEndOf="@id/passchk"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/skyblue"
+        android:text="Update Details ?"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordedt"
+        app:layout_constraintVertical_bias="0.25" />
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:text="Delete Account ?"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <Button
+        android:id="@+id/show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
+        android:text="Show Details"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/update"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintStart_toStartOf="@+id/guideline14" />
+
+    <Button
+        android:id="@+id/signout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/orange"
+        android:text="sign out ?"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
