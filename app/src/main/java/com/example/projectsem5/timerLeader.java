@@ -28,5 +28,4 @@ public class timerLeader {
         Score = score;
     }
 
-    public String getData(){ return Name+" "+Score; }
 }
