@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +30,8 @@ import java.util.ArrayList;
 public class Test extends AppCompatActivity {
 ListView listview,listview1,lim1,lim2,lim3;
 View view;
-TextView text,switchlead;
+TextView text,switchlead,scoretxt,score;
+String ts,ls,Uid,n,oldtym;
 ArrayList<String> userList=new ArrayList<String>();
 ArrayList<String> userList1=new ArrayList<>();
 ArrayList<String> limlist=new ArrayList<>();
@@ -39,7 +42,9 @@ ArrayAdapter<String> arrayAdapter1;
 ArrayAdapter<String> limAdapter;
 ArrayAdapter<String> limAdapter1;
 ArrayAdapter<String> limAdapter2;
-
+FirebaseAuth auth = FirebaseAuth.getInstance();
+FirebaseUser user = auth.getCurrentUser();
+DatabaseReference reference= FirebaseDatabase.getInstance("https://projectsem5-94bc6-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Players");
 DatabaseReference ref= FirebaseDatabase.getInstance("https://projectsem5-94bc6-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Leaderboard");
 DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("LimitLeader");
 
@@ -54,6 +59,23 @@ DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6
         lim2=findViewById(R.id.limit2);
         lim3=findViewById(R.id.limit3);
         switchlead=findViewById(R.id.switchlead);
+        scoretxt=findViewById(R.id.scoretxt);
+        score=findViewById(R.id.score);
+
+        Uid = user.getUid();
+        DatabaseReference UserRef = reference.child(Uid);
+
+        UserRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                n=snapshot.getValue(UserModel.class).getUsername().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         getSupportActionBar().hide();
         view=this.getWindow().getDecorView();
@@ -70,6 +92,8 @@ DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6
     if (th.equals("th1") || th.equals(null)) {
         view = this.getWindow().getDecorView();
         view.setBackgroundColor(getResources().getColor(R.color.skyblue));
+        scoretxt.setTextColor(getResources().getColor(R.color.black));
+        score.setTextColor(getResources().getColor(R.color.black));
         arrayAdapter=new ArrayAdapter<>(Test.this,R.layout.test_list,userList);
         listview.setAdapter(arrayAdapter);
         arrayAdapter1=new ArrayAdapter<>(Test.this, R.layout.test_list,userList1);
@@ -88,6 +112,8 @@ DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6
         window.setStatusBarColor(this.getResources().getColor(R.color.black));
         switchlead.setTextColor(getResources().getColor(R.color.white));
         switchlead.setCompoundDrawableTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+        scoretxt.setTextColor(getResources().getColor(R.color.white));
+        score.setTextColor(getResources().getColor(R.color.white));
         arrayAdapter=new ArrayAdapter<>(Test.this,R.layout.test_list_white,userList);
         listview.setAdapter(arrayAdapter);
         arrayAdapter1=new ArrayAdapter<>(Test.this, R.layout.test_list_white,userList1);
@@ -99,6 +125,34 @@ DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6
         limAdapter2=new ArrayAdapter<>(Test.this,R.layout.test_lim_list_white,limlist2);
         lim3.setAdapter(limAdapter2);
     }
+
+
+    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            ts = snapshot.child(n).child("score").getValue(String.class);
+            score.setText(" "+ts);
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    });
+
+    limref.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot snapshot) {
+            ls=snapshot.child(n).child("score").getValue(String.class);
+            oldtym=snapshot.child(n).child("time").getValue(String.class);
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
+    });
+
 
 
 
@@ -116,7 +170,7 @@ DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6
     ArrayAdapter<String> limAdapter2=new ArrayAdapter<>(Test.this,R.layout.test_lim_list,limlist2);
     lim3.setAdapter(limAdapter2);*/
 
-    Query top=ref.orderByChild("score").limitToLast(15);
+    Query top=ref.orderByChild("score").limitToLast(10);
     top.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -138,7 +192,7 @@ DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6
         }
     });
 
-    Query toplim=limref.orderByChild("score").limitToLast(15);
+    Query toplim=limref.orderByChild("score").limitToLast(10);
     toplim.addValueEventListener(new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -174,6 +228,13 @@ DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6
                     lim1.setVisibility(View.VISIBLE);
                     lim2.setVisibility(View.VISIBLE);
                     lim3.setVisibility(View.VISIBLE);
+                    if (ls != null) {
+                        score.setText(" "+ls+" ("+oldtym+")");
+                    }
+                    else {
+                        score.setText("--");
+                    }
+
 
                 }
                 else {
@@ -184,7 +245,16 @@ DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6
                     listview1.setVisibility(View.VISIBLE);
                     lim1.setVisibility(View.INVISIBLE);
                     lim2.setVisibility(View.INVISIBLE);
-                    lim3.setVisibility(View.INVISIBLE);                }
+                    lim3.setVisibility(View.INVISIBLE);
+
+                    if(ts !=null){
+                        score.setText(" "+ts);
+                    }
+                    else{
+                        score.setText("--");
+                    }
+                }
+
             }
         });
 
