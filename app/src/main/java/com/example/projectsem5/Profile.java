@@ -1,10 +1,5 @@
 package com.example.projectsem5;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,17 +14,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class Profile extends AppCompatActivity {
@@ -37,6 +33,8 @@ public ImageView fnameEdtBtn,lnameEdtBtn,unameEdtBtn,emailEdtBtn,passEdtBtn,fnam
 public TextView firstname,lastname,username,email,password,textview1,textview2,textview3,textview4,textview5;
 public EditText fnameedt,lnameedt,unameedt,emailedt,passedt;
 public Button update,delete,show,signout;
+public DatabaseReference ref=FirebaseDatabase.getInstance("https://projectsem5-94bc6-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Leaderboard");
+public DatabaseReference limref=FirebaseDatabase.getInstance("https://projectsem5-94bc6-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("LimitLeader");
 public DatabaseReference reference = FirebaseDatabase.getInstance("https://projectsem5-94bc6-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Players");
 public DatabaseReference userRef;
 public String unameFromDb,passwordFromDb,emailFromDb,fnameFromDb,lnameFromDb,n,f,l,p,e;
@@ -444,6 +442,8 @@ public View view;
                             if(task.isSuccessful()){
                                 Toast.makeText(Profile.this, "Account Successfully Deleted ! GoodBye !!", Toast.LENGTH_SHORT).show();
                                 reference.child(Uid).removeValue();
+                                ref.child(n).removeValue();
+                                limref.child(n).removeValue();
                                 startActivity(new Intent(Profile.this,MainActivity.class));
 
                             }
