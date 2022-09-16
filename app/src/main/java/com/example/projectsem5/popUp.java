@@ -58,7 +58,7 @@ public class popUp extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width*0.8) ,(int) (height*0.2));
+        getWindow().setLayout((int) (width*0.8) ,(int) (height*0.25));
 
         String ps = getIntent().getStringExtra("ps");
         String ns = getIntent().getStringExtra("ns");
@@ -68,6 +68,7 @@ public class popUp extends AppCompatActivity {
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //startActivity(new Intent(popUp.this,HomePage.class));
                 finish();
             }
         });

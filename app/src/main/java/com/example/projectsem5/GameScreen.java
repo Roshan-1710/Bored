@@ -37,7 +37,7 @@ ImageView obj,cloud1,cloud2,cloud3,ground;
 Button start,stop;
 TextView score,time,timetxt,scoretxt;
 boolean gameOn = false;
-Integer s=0;
+Integer s=0,in=0;
 Timer timer;
 TimerTask timerTask;
 String New,n,scr,tym,oldtym,ns;
@@ -231,6 +231,7 @@ FirebaseUser user= auth.getCurrentUser();
             score.setText(""+s);
             targetChangePosition();
 
+
         });
 
         stop.setOnClickListener(new View.OnClickListener() {
@@ -239,7 +240,7 @@ FirebaseUser user= auth.getCurrentUser();
                 timerTask.cancel();
                 obj.setVisibility(View.INVISIBLE);
                 tym=time.getText().toString();
-
+                String nt=tym;
                 String limsc=score.getText().toString();
                 if (New != null) {
                     Integer x = new Integer(Integer.parseInt(scr));
@@ -259,9 +260,16 @@ FirebaseUser user= auth.getCurrentUser();
                     limref.child(n).setValue(ll);
                 }
 
-                Intent i = new Intent(GameScreen.this, HomePage.class);
+                Intent i = new Intent(GameScreen.this, popUp.class);
+                i.putExtra("ps",limsc+" ("+nt+")");
+                i.putExtra("ns",scr+" ("+tym+")");
                 startActivity(i);
-                finish();
+                in+=1;
+                if (in==2){
+                    startActivity(new Intent(GameScreen.this,HomePage.class));
+                    finish();
+                }
+
 
             }
         });
@@ -282,6 +290,7 @@ FirebaseUser user= auth.getCurrentUser();
         layoutParams.leftMargin=ranX;
         layoutParams.topMargin=ranY;
         obj.requestLayout();
+        obj.requestFocus();
     }
 
     private void startTimer(){
@@ -341,4 +350,10 @@ FirebaseUser user= auth.getCurrentUser();
         return String.format("%02d",hours)+" : "+String.format("%02d",minutes)+" : "+String.format("%02d",seconds);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(GameScreen.this,HomePage.class));
+        finish();
+    }
 }
