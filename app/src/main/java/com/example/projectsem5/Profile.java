@@ -102,6 +102,8 @@ public View view;
         lnameEdtBtn.setVisibility(View.INVISIBLE);
         emailEdtBtn.setVisibility(View.INVISIBLE);
         passEdtBtn.setVisibility(View.INVISIBLE);
+        view = this.getWindow().getDecorView();
+        view.setBackgroundColor(getResources().getColor(R.color.white));
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("myUserPrefs", Context.MODE_PRIVATE);
         String th = sp.getString("theme", "");

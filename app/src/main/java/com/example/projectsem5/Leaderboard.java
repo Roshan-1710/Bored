@@ -69,6 +69,11 @@ public class Leaderboard extends AppCompatActivity {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(R.color.skyblue));
+        view = this.getWindow().getDecorView();
+        view.setBackgroundColor(getResources().getColor(R.color.skyblue));
+        scoretxt.setTextColor(getResources().getColor(R.color.black));
+        score.setTextColor(getResources().getColor(R.color.black));
+
         SharedPreferences sp = getApplicationContext().getSharedPreferences("myUserPrefs", Context.MODE_PRIVATE);
         String th = sp.getString("theme", "");
         if (th.equals("th1") || th.equals(null)) {
@@ -124,7 +129,7 @@ public class Leaderboard extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setHasFixedSize(true);
 
-        reference.orderByChild("score").limitToLast(10).addValueEventListener(new ValueEventListener() {
+        reference.orderByChild("score").limitToLast(15).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){

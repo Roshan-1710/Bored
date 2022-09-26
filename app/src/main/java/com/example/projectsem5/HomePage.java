@@ -47,7 +47,8 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         getSupportActionBar().hide();
-
+        view = this.getWindow().getDecorView();
+        view.setBackgroundColor(getResources().getColor(R.color.skyblue));
         window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -66,6 +67,7 @@ public class HomePage extends AppCompatActivity {
         cloud3=(ImageView) findViewById(R.id.cloud3);
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("myUserPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sp.edit();
         String th = sp.getString("theme", "");
         if (th.equals("th1") || th.equals(null)) {
             view = this.getWindow().getDecorView();
@@ -125,13 +127,28 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+        if (sp.getInt("mode",-1)==1){
+            chgmode.setText("Timed");
+            chgmode.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_access_time_24, 0, 0, 0);
+        }
+        else if(sp.getInt("mode",-1)==2){
+            chgmode.setText("Limitless");
+            chgmode.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_timer_off_24, 0, 0, 0);
+        }
+        else {
+            chgmode.setText("Change Mode");
+        }
         chgmode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (chgmode.getText().toString() == "Change Mode" || chgmode.getText().toString() == "Limitless") {
+                    editor.putInt("mode",1);
+                    editor.commit();
                     chgmode.setText("Timed");
                     chgmode.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_access_time_24, 0, 0, 0);
                 } else {
+                    editor.putInt("mode",2);
+                    editor.commit();
                     chgmode.setText("Limitless");
                     chgmode.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_timer_off_24, 0, 0, 0);
                 }

@@ -27,6 +27,14 @@ public class popUp extends AppCompatActivity {
         neww=(TextView) findViewById(R.id.neww);
         newtext=(TextView) findViewById(R.id.newtxt);
         ok=(Button) findViewById(R.id.ok);
+        view = this.getWindow().getDecorView();
+        view.setBackground(getResources().getDrawable(R.drawable.borderpop_white));
+        prevtext.setTextColor(getResources().getColor(R.color.black));
+        prev.setTextColor(getResources().getColor(R.color.black));
+        newtext.setTextColor(getResources().getColor(R.color.black));
+        neww.setTextColor(getResources().getColor(R.color.black));
+        ok.setBackgroundColor(getResources().getColor(R.color.yellowgreen));
+        ok.setTextColor(getResources().getColor(R.color.black));
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("myUserPrefs", Context.MODE_PRIVATE);
         String th = sp.getString("theme", "");

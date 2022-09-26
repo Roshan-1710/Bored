@@ -76,6 +76,7 @@ FirebaseUser user= auth.getCurrentUser();
         cloud2=(ImageView) findViewById(R.id.imageView2);
         cloud3=(ImageView) findViewById(R.id.imageView3);
         ground=(ImageView) findViewById(R.id.gameground);
+        back.setBackgroundColor(getResources().getColor(R.color.skyblue));
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("myUserPrefs", Context.MODE_PRIVATE);
         String th = sp.getString("theme", "");
@@ -242,7 +243,7 @@ FirebaseUser user= auth.getCurrentUser();
                 tym=time.getText().toString();
                 String nt=tym;
                 String limsc=score.getText().toString();
-                if (New != null) {
+                if (New != null || scr != null) {
                     Integer x = new Integer(Integer.parseInt(scr));
                     if (new Integer(Integer.parseInt(limsc)) > x) {
                         scr = limsc;
@@ -256,7 +257,7 @@ FirebaseUser user= auth.getCurrentUser();
                     }
                 }
                 else {
-                    limitlessLeader ll=new limitlessLeader(n,tym,scr);
+                    limitlessLeader ll=new limitlessLeader(n,tym,limsc);
                     limref.child(n).setValue(ll);
                 }
 
