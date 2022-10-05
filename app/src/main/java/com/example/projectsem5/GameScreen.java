@@ -35,7 +35,7 @@ ConstraintLayout backlay,back;
 View view;
 ImageView obj,cloud1,cloud2,cloud3,ground;
 Button start,stop;
-TextView score,time,timetxt,scoretxt;
+TextView score,time,timetxt,scoretxt,how,step1,step2,step3,step4,step5;
 boolean gameOn = false;
 Integer s=0,in=0;
 Timer timer;
@@ -76,6 +76,12 @@ FirebaseUser user= auth.getCurrentUser();
         cloud2=(ImageView) findViewById(R.id.imageView2);
         cloud3=(ImageView) findViewById(R.id.imageView3);
         ground=(ImageView) findViewById(R.id.gameground);
+        how=(TextView) findViewById(R.id.howto);
+        step1=(TextView) findViewById(R.id.step1);
+        step2=(TextView) findViewById(R.id.step2);
+        step3=(TextView) findViewById(R.id.step3);
+        step4=(TextView) findViewById(R.id.step4);
+        step5=(TextView) findViewById(R.id.step5);
         back.setBackgroundColor(getResources().getColor(R.color.skyblue));
 
         SharedPreferences sp = getApplicationContext().getSharedPreferences("myUserPrefs", Context.MODE_PRIVATE);
@@ -92,6 +98,12 @@ FirebaseUser user= auth.getCurrentUser();
             timetxt.setTextColor(getResources().getColor(R.color.white));
             score.setTextColor(getResources().getColor(R.color.white));
             scoretxt.setTextColor(getResources().getColor(R.color.white));
+            how.setTextColor(getResources().getColor(R.color.yellowgreen));
+            step1.setTextColor(getResources().getColor(R.color.yellowgreen));
+            step2.setTextColor(getResources().getColor(R.color.yellowgreen));
+            step3.setTextColor(getResources().getColor(R.color.yellowgreen));
+            step4.setTextColor(getResources().getColor(R.color.yellowgreen));
+            step5.setTextColor(getResources().getColor(R.color.yellowgreen));
             ground.setImageDrawable(getResources().getDrawable(R.drawable.groundlildark));
             cloud1.setImageDrawable(getResources().getDrawable(R.drawable.starmin));
             cloud2.setImageDrawable(getResources().getDrawable(R.drawable.starmin));
@@ -137,9 +149,10 @@ FirebaseUser user= auth.getCurrentUser();
         backlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                s=s-3;
-                score.setText(""+s);
+                if (gameOn == true) {
+                    s = s - 3;
+                    score.setText("" + s);
+                }
             }
         });
 
@@ -147,7 +160,13 @@ FirebaseUser user= auth.getCurrentUser();
             @Override
             public void onClick(View view) {
                 if (gameOn == false) {
-
+                    how.setVisibility(View.GONE);
+                    step1.setVisibility(View.GONE);
+                    step2.setVisibility(View.GONE);
+                    step3.setVisibility(View.GONE);
+                    step4.setVisibility(View.GONE);
+                    step5.setVisibility(View.GONE);
+                    //s=00;
                     gameOn=true;
                     if (mode.equals("Timed")) {
                         obj.setVisibility(View.VISIBLE);

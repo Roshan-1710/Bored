@@ -85,9 +85,9 @@ FirebaseAuth mAuth;
                     //String n= uname.getText().toString();
                     errtxt.setVisibility(View.INVISIBLE);
                     isUser();
-                    /*SharedPreferences.Editor editor=sp.edit();
-                    editor.putString("theme","th1");
-                    editor.commit();*/
+                    SharedPreferences.Editor editor=sp.edit();
+                    editor.putInt("mode",0);
+                    editor.commit();
                 }
 
             }

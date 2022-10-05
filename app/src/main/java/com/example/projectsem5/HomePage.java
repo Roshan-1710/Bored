@@ -135,7 +135,7 @@ public class HomePage extends AppCompatActivity {
             chgmode.setText("Limitless");
             chgmode.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_timer_off_24, 0, 0, 0);
         }
-        else {
+        else if(sp.getInt("mode",-1)==0){
             chgmode.setText("Change Mode");
         }
         chgmode.setOnClickListener(new View.OnClickListener() {
